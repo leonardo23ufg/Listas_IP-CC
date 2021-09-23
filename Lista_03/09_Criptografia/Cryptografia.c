@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #define N 1000
 int main()
 {
@@ -9,10 +10,8 @@ int main()
     {
         i2 = iy = iz = 0;
         scanf("%*c %[^\n]", Ini);
-        for (i2 = 0; i2 < sizeof(Ini); i2++)
+        for (i2 = 0; Ini[i2] != '\0'; i2++)
         {
-            if (Ini[i2] == 0)
-                break;
             if ((Ini[i2] > 64 && Ini[i2] < 91) || (Ini[i2] > 96 && Ini[i2] < 123))
                 Ini[i2] += 3;
         }
@@ -22,9 +21,9 @@ int main()
             Fin[iz] = Ini[iy];
             iy--;
         }
-        Fin[iz] = 0;
-        for (i3 = i2 / 2; i2 >= i3; i2--)
-            Fin[i2]--;
+        Fin[iz] = '\0';
+        for (i3 = i2/2; i3 < i2; i3++)
+            Fin[i3]--;
         printf("%s\n", Fin);
     }
     return 0;
